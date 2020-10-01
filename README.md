@@ -13,6 +13,10 @@ Without using the `--production` flag we don't see this behaviour and instead th
 ![Non-halting Log](images/nonhaltlog.png)
 
 
+We require this `--production` flag because we require the usage of the PostgreSQL event broker See below:
+
+![PostgreSQL Error](images/postgreserror.png)
+
 ## Impact to Enterprise Customers
 
 > From the investigation I've currently conducted I can curently see no work around to this issue.
@@ -49,6 +53,24 @@ docker run --rm -it  -p 8080:8080/tcp chatbot-rasa-x-no-production-flag:latest
 
 Now ensure the docker container is stopped.
 
+### No Production Flag Postgres SQL Error
+
+Ok now let's see why this is a blocker.
+
+```bash
+# First cd into the folder
+cd ../noProductionFlagPostgresError
+
+# Build the docker image, note you will need to correctly docker login to gcr in order to pull the enterprise image
+docker build --no-cache --rm -t chatbot-rasa-x-no-production-flag-postgres-error .
+
+# Run the image
+docker run --rm -it  -p 8080:8080/tcp chatbot-rasa-x-no-production-flag-postgres-error:latest
+
+# Observer the "Rasa X currently only supports a SQLite event broker with path 'events.db' when running locally." log.
+```
+
+Now ensure the docker container is stopped.
 
 ### Production Flag
 
