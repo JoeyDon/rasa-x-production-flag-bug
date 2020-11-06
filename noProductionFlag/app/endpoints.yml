@@ -1,23 +1,23 @@
-# tracker_store:
-#   type: dynamo
-#   table_name: ${TABLE_NAME}
-#   region: ${TABLE_REGION}
-# event_broker:
-#   type: SQL
-#   url: ${RDS_HOSTNAME}
-#   port: 5432
-#   dialect: postgresql
-#   username: ${RDS_USERNAME}
-#   password: ${RDS_PASSWORD}
-#   db: ${RDS_DATABASE}
-# event_broker:
-#   type: SQL
-#   url: localhost
-#   port: 5432
-#   dialect: postgresql
-#   username: postgres
-#   password: docker
-#   db: test
+tracker_store:
+  type: dynamo
+  table_name: ${TABLE_NAME}
+  region: ${TABLE_REGION}
+event_broker:
+  type: SQL
+  url: ${RDS_HOSTNAME}
+  port: 5432
+  dialect: postgresql
+  username: ${RDS_USERNAME}
+  password: ${RDS_PASSWORD}
+  db: ${RDS_DATABASE}
+event_broker:
+  type: SQL
+  url: localhost
+  port: 5432
+  dialect: postgresql
+  username: postgres
+  password: docker
+  db: test
 
 
 # This file contains the different endpoints your bot can use.
